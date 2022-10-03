@@ -1,0 +1,24 @@
+{
+	"Create table": {
+		"scope": "sql9",
+		"prefix": "cd",
+		"body": [
+			"CREATE TABLE [$1] (",
+			"  [mfd_id] INT64,",
+			"--   [a_bool] BOOLEAN,",
+			"--   [a_date] DATETIME,",
+			"--   [an_int] INT64,",
+			"--   [a_float] FLOAT64,",
+			"--   [a_vec] FLOAT64x3,",
+			"--   [ntext] NVARCHAR,",
+			"--   [text] VARCHAR,",
+			"--   [geom] GEOM,",
+			"  INDEX [mfd_id_x] BTREE ([mfd_id]),",
+			"  INDEX [key_x] BTREE ([key] COLLATE 'neutral'),",
+			"--   INDEX [key_x] BTREEDUP ([an_int], [a_float]),",
+			"  PROPERTY 'Folder' '$2'",
+			");"
+		],
+		"description": "Create a table"
+	}
+}

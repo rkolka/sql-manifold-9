@@ -1,0 +1,43 @@
+{
+    "comments": {
+        // symbol used for single line comment. Remove this entry if your language does not support line comments
+        "lineComment": "--",
+    },
+    // symbols used as brackets
+    "brackets": [
+        ["{", "}"],
+        ["[", "]"],
+        ["(", ")"]
+    ],
+    // symbols that are auto closed when typing
+    "autoClosingPairs": [
+        ["{", "}"],
+        ["[", "]"],
+        ["(", ")"],
+        { "open": "\"", "close": "\"", "notIn": ["string"] },
+        { "open": "@'", "close": "'", "notIn": ["string", "comment"] },
+        { "open": "'", "close": "'", "notIn": ["string", "comment"] }
+    ],
+    "autoCloseBefore": ";:.,=}])>` \n\t",
+    // symbols that can be used to surround a selection
+    "surroundingPairs": [
+        ["{", "}"],
+        ["[", "]"],
+        ["(", ")"],
+        ["\"", "\""],
+        ["'", "'"],
+        ["`", "`"]
+    ]
+,
+    "indentationRules": {
+        // if line starts with SELECT, FROM, WHERE, ORDER BY, ... 
+        "increaseIndentPattern": "^(\\s*[(]?[Ss][Ee][Ll][Ee][Cc][Tt]\\b.*)|(\\s*[Ff][Rr][Oo][Mm]\\b.*)|(\\s*[Ww][Hh][Ee][Rr][Ee]\\b.*)|(\\s*[Gg][Rr][Oo][Uu][Pp]\\s+[Bb][Yy]\\b.*)|(\\s*[Oo][Rr][Dd][Ee][Rr]\\s+[Bb][Yy]\\b.*)$",
+        "decreaseIndentPattern": "^.*;$",
+    }
+    // enhancedBrackets:[
+    // 	{ openTrigger: 'n', open: /begin$/i, closeComplete: 'end', matchCase: true },
+    // 	{ openTrigger: 'e', open: /case$/i, closeComplete: 'end', matchCase: true },
+    // 	{ openTrigger: 'n', open: /when$/i, closeComplete: 'then', matchCase: true }
+    // ],
+    // noindentBrackets: '()',
+}

@@ -1,0 +1,167 @@
+{
+    "$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
+    "information_for_contributors": [
+        "Scope names have been chosen mainly by the color from the Dark+ (default) theme"
+    ],
+    "version": "https://github.com/rkolka/vscode-sql9/commit/750d30dc48c4c0317b63bb5f1ed3e71487bb84a1",
+    "name": "SQL9",
+    "scopeName": "source.sql9",
+    "patterns": [
+        {
+            "comment": "@vars and function @args - a word which starts with @ (and not @@)",
+            "match": "((?<!@)@)\\b(\\w+)\\b",
+            "name": "constant.character.set.regexp"
+        },
+        {
+            "comment": "bracketed names - datasource, table, column",
+            "match": "(\\[)[^\\]]*(\\])",
+            "name": "entity.name.variable"
+        },
+        {
+            "comment": "SQL line comments",
+            "match": "--.*",
+            "name": "comment"
+        },
+        {
+            "comment": "SQL 9 keywords/phrases",
+            "match": "\\b(?i)(ADD|ADD CONSTRAINT|ADD INDEX|ADD PROPERTY|ALL|ALTER|ALTER TABLE|AND|AS|AS ROOT|AS SCRIPT|AS SCRIPT FILE|AS SCRIPT INLINE|ASC|AVERAGE|BATCH|BETWEEN|BITAND|BITNOT|BITOR|BITXOR|BTREE|BTREEDUP|BTREEDUPNULL|BTREENULL|CALL|CASE|CASE WHEN|CAST|CASTV|COLLATE|COLLECT|COMMENTS|CONSTRAINT|CREATE|CREATE DATASOURCE|CREATE ROOT|CREATE TABLE|CROSS JOIN|DATASOURCE|DELETE FROM|DESC|DISTINCT|DIV|DRAWING|DROP|DROP CONSTRAINT|DROP INDEX|DROP PROPERTY|DROP ROOT|DROP TABLE|ELSE|END|ENGINE|ENTRY|ENTRYSCHEMA|EXCEPT|EXECUTE WITH|EXISTS|FETCH|FROM|FULL OUTER JOIN|FUNCTION|GROUP BY|HAVING|IMAGE|IN|INDEX|INDEXED|INLINE|INNER JOIN|INSERT INTO|INTERSECT|INTO|IS NULL|JOIN|LABELS|LAYOUT|LEFT|LIKE|LOCATION|MAP|MOD|NOT|OFFSET|ON|OR|ORDER BY|PRAGMA|PRAGMA POP|PRAGMA PUSH|PROPERTY|QUERY|RENAME|RENAME CONSTRAINT|RENAME INDEX|RENAME TABLE|RIGHT|RTREE|SCRIPT|SCRIPT|SELECT|SET|SPLIT|TABLE|THEN|THREADS|TILEREDUCE|TILESIZE|TILETYPE|UNION|UPDATE|USE CHILD|USE PARENT|USE ROOT|VALUE|VALUES|WHEN|WHERE|WITH|XOR)\\b",
+                              
+            "name": "keyword.other.sql"
+        },
+        {
+            "comment": "Operators",
+            "match": "(?i)(%|&|\\*|\\+|-|/|<|<=|<>|=|>|>=|\\^)",
+            "name": "keyword.operator.sql"
+        },
+        {
+            "comment": "Type names",
+            "match": "(?i)\\b(BOOLEAN|DATETIME|FLOAT32|FLOAT32X2|FLOAT32X3|FLOAT32X4|FLOAT64|FLOAT64X2|FLOAT64X3|FLOAT64X4|GEOM|GEOMMFD|GEOMWKB|INT16|INT16X2|INT16X3|INT16X4|INT32|INT32X2|INT32X3|INT32X4|INT64|INT64X2|INT64X3|INT64X4|INT8|INT8X2|INT8X3|INT8X4|NVARCHAR|TILE|UINT16|UINT16X2|UINT16X3|UINT16X4|UINT32|UINT32X2|UINT32X3|UINT32X4|UINT64|UINT64X2|UINT64X3|UINT64X4|UINT8|UINT8X2|UINT8X3|UINT8X4|UUID|VARBINARY|VARCHAR)\\b",
+            "name": "support.type"
+        },
+
+        {
+            "comment": "Constants",
+            "match": "(?i)\\b(CR|CRLF|E|FALSE|FLOAT32MAX|FLOAT32MIN|FLOAT64MAX|FLOAT64MIN|INT16MAX|INT16MIN|INT32MAX|INT32MIN|INT8MAX|INT8MIN|LF|NULL|PI|TRUE|UINT16MAX|UINT32MAX|UINT8MAX|WHITESPACE|noaccent|nocase|nokanatype|nosymbols|nowidth|wordsort)\\b",
+            "name": "keyword.other.constant"
+        },
+
+        
+
+        {
+            "comment": "Aggregate functions",
+            "match": "(?i)\\b(Avg|Corr|Count|Covar|CovarPop|Diversity|DiversityIndex|First|FirstNonNull|GeomMergeAreas|GeomMergeLines|GeomMergePoints|GeomUnionAreas|GeomUnionRects|JoinAnd|JoinBitAnd|JoinBitOr|JoinBitXor|JoinOr|JoinXor|Last|LastNonNull|Major|Max|Median|Min|Percentile|StDev|StDevPop|StringJoinTokens|Sum|Var|VarPop)\\b",
+            "name": "entity.name.function.aggregate.sql"
+        },
+        {
+            "comment": "Coord functions",
+            "match": "(?i)\\b(CoordConvert|CoordConvertPoint|CoordConvertPoint3|CoordConvertRect|CoordConvertTile|CoordConvertTileSet|CoordConvertTileSetDirect|CoordConvertTileSetDirectPar|CoordConvertTileSetPar|CoordConvertTrace|CoordConverterIsIdentity|CoordConverterIsScaleShift|CoordConverterIsScaleShiftSwap|CoordConverterIsXYZ|CoordConverterMake|CoordConverterMakePath|CoordConverterMakeWarpNumeric|CoordConverterMakeWarpThinPlateSpline|CoordConverterMakeWarpTriangulation|CoordConverterSteps|CoordDatum|CoordDatumDefault|CoordDatumEpsg|CoordDatumParameters|CoordDatums|CoordMeasureArea|CoordMeasureBearing|CoordMeasureBearingPoint|CoordMeasureDistancePoint|CoordMeasureLength|CoordMeasureRadius|CoordMeasureMake|CoordSystem|CoordSystemBase|CoordSystemDefault|CoordSystemDefaultLatLon|CoordSystemEpsg|CoordSystemForceXY|CoordSystemMatchEpsg|CoordSystemMatchEpsgBase|CoordSystemOverride|CoordSystemParse|CoordSystemParseEpsg|CoordSystemParseOverrides|CoordSystemParseSrid|CoordSystemParseSridSubtype|CoordSystemPlain|CoordSystems|CoordSystemScaleXY|CoordSystemScaleXYToUnit|CoordSystemScaleXYZ|CoordSystemScaleXYZBounds|CoordSystemTypeParameters|CoordSystemTypes|CoordSystemWkt|CoordSystemWkt2|CoordSystemXml|CoordTransform|CoordTransformChoices|CoordTransformEpsg|CoordTransforms|CoordTransformTypeParameters|CoordTransformTypes|CoordUnit|CoordUnitByName|CoordUnitDefault|CoordUnitDefaultLatLon|CoordUnitEpsg|CoordUnits|CoordUnitScale)\\b",
+            "name": "entity.name.function.coordinates.sql"
+        },
+        {
+            "comment": "Datetime functions",
+            "match": "(?i)\\b(DateTimeAddDays|DateTimeClearTime|DateTimeCurrent|DateTimeCurrentRef|DateTimeDay|DateTimeDifferenceDays|DateTimeHour|DateTimeMake|DateTimeMakeFull|DateTimeMillisecond|DateTimeMinute|DateTimeMonth|DateTimeSecond|DateTimeWeek|DateTimeWeekDay|DateTimeYear|DateTimeYearDay|DateTimeYearLeap)\\b",
+            "name": "entity.name.function.datetime.sql"
+        },
+        {
+            "comment": "Geom functions",
+            "match": "(?i)\\b(GeomAdjacent|GeomArea|GeomAreaGeo|GeomBearing|GeomBearingGeo|GeomBearingPoint|GeomBearingPointGeo|GeomBoundedAreas|GeomBounds|GeomBoundsCircle|GeomBoundsRect|GeomBoundsRectRotated|GeomBoundsX|GeomBoundsY|GeomBoundsZ|GeomBranch|GeomBranchCount|GeomBranchFirst|GeomBranchLast|GeomBuffer|GeomCenter|GeomCenterInner|GeomCenterWeight|GeomClip|GeomContains|GeomConvertToArea|GeomConvertToLine|GeomConvertToPoint|GeomConvexHull|GeomCoordCount|GeomCoordLine|GeomCoordXY|GeomCoordXYZ|GeomCurveCount|GeomDistance|GeomDistancePoint|GeomDistancePoint3|GeomDistancePointGeo|GeomFlip|GeomGml|GeomHasCurves|GeomHasZ|GeomInflateRect|GeomInflateRectTileSize|GeomIntersectLines|GeomIntersects|GeomIsArea|GeomIsLine|GeomIsLineClosed|GeomIsNormalized|GeomIsPoint|GeomJsonGeo|GeomLength|GeomLengthGeo|GeomLinearize|GeomMakeCircle|GeomMakePoint|GeomMakePoint3|GeomMakeRect|GeomMakeRectDiagonal|GeomMakeSegment|GeomMakeSegment3|GeomMakeTriangle|GeomMakeTriangle3|GeomMergeAreas|GeomMergeLines|GeomMergePoints|GeomNormalize|GeomNormalizeTopology|GeomOverlayAdjacent|GeomOverlayAdjacentFilter|GeomOverlayAdjacentFilterPar|GeomOverlayAdjacentPar|GeomOverlayContained|GeomOverlayContainedFilter|GeomOverlayContainedFilterPar|GeomOverlayContainedPar|GeomOverlayContaining|GeomOverlayContainingFilter|GeomOverlayContainingFilterPar|GeomOverlayContainingPar|GeomOverlayIntersecting|GeomOverlayIntersectingFilter|GeomOverlayIntersectingFilterPar|GeomOverlayIntersectingPar|GeomOverlayTopologyIdentity|GeomOverlayTopologyIdentityPar|GeomOverlayTopologyIntersect|GeomOverlayTopologyIntersectPar|GeomOverlayTopologyUnion|GeomOverlayTopologyUnionPar|GeomOverlayTopologyUpdate|GeomOverlayTopologyUpdatePar|GeomOverlayTouching|GeomOverlayTouchingFilter|GeomOverlayTouchingFilterPar|GeomOverlayTouchingPar|GeomOverlayWithin|GeomOverlayWithinFilter|GeomOverlayWithinFilterPar|GeomOverlayWithinPar|GeomPartLine|GeomRadius|GeomRadiusGeo|GeomRemoveCurves|GeomRemoveZ|GeomReverseLine|GeomRotate|GeomScale|GeomScaleCentered|GeomScaleRev|GeomScaleShift|GeomScaleShiftZ|GeomSegmentize|GeomSetZ|GeomShift|GeomSmooth|GeomSnapToGrid|GeomToBranches|GeomToConvex|GeomToConvexPar|GeomToCoords|GeomToCoordsLineSequence|GeomToParts|GeomToPartsLineSequence|GeomToSegments|GeomToShapes|GeomToShapesEsri|GeomTouches|GeomTriangulate|GeomTriangulatePar|GeomTriangulateLines|GeomTriangulateLinesPar|GeomType|GeomUnionAreas|GeomUnionRects|GeomVoronoi|GeomVoronoiPar|GeomVoronoiLines|GeomVoronoiLinesPar|GeomVoronoiPoints|GeomVoronoiPointsPar|GeomWithin|GeomWkb|GeomWkt)\\b",
+            "name": "entity.name.function.geom.sql"
+        },
+        {
+            "comment": "Math and other functions",
+            "match": "(?i)\\b(Abs|Acos|Acosh|Asin|Asinh|Atan|Atan2|Atanh|BinaryStringBase64|BinaryStringHex|BinaryWkbGeom|Bound|Cbrt|Ceil|CeilDecs|Chr|Coalesce|CollateCode|CollateCodeDef|Compare|ComponentBounds|ComponentCoordSystem|ComponentFieldBounds|ComponentFieldCoordSystem|ComponentFieldDrawing|ComponentFieldImage|ComponentName|ComponentPath|ComponentProperty|ComponentType|Cos|Cosh|DataHash|DataLength|Erf|Erfc|Exp|Exp10|Exp2|Expm1|Floor|FloorDecs|Fract|FractDecs|GeocodeAddress|GeocodeAddressMatches|GeocodeAddressSupported|GeocodeLocationMatches|GeocodeLocationSupported|GeocodeSearchMatches|GeocodeSearchRectMatches|GeocodeSearchSupported|Hypot|J0|J1|Jn|Lgamma|Log|Log10|Log1p|Log2|NullIf|Pow|PragmaValue|Random|RandomHash|RandomInt|RandomIntHash|RandomIntRef|RandomRef|Rcbrt|Round|RoundDecs|Rsqrt|Selection|SelectionIsEmpty|SelectionIsEmptyWindow|SelectionIsInverted|SelectionIsInvertedWindow|SelectionKeys|SelectionKeysWindow|SelectionWindow|Sign|Sin|Sinh|Sqrt|SystemCpuCount|SystemGpgpuCount|SystemGpgpus|TableCache|TableCacheIndexGeoms|Tan|Tanh|Tgamma|ThreadConfig|Trunc|TruncDecs|TypeName|UuidMakeNew|UuidMakeNewRef|ValueCount|ValueSequence|ValueSequenceRandom|ValueSequenceRandomInt|ValueSequenceTileXY|Y0|Y1|Yn)\\b",
+            "name": "entity.name.function.mathematical.sql"
+        },
+        {
+            "comment": "String functions",
+            "match": "(?i)\\b(StringBinaryBase64|StringBinaryHex|StringCompareCollate|StringCompareKeyCollate|StringConcat|StringContains|StringContainsCollate|StringDateTime|StringDecrypt|StringEncrypt|StringEnd|StringEndsWith|StringEndsWithCollate|StringEscape|StringEscapeEncode|StringEscapeJson|StringFind|StringFindCollate|StringFindNth|StringFindNthCollate|StringFormat|StringFormatBinary|StringFormatBoolean|StringFormatDateTime|StringFormatDurationDays|StringFormatDurationSeconds|StringFormatGeom|StringFormatNumber|StringFormatTile|StringFormatUuid|StringFormatVector|StringGmlCoordSystem|StringGmlGeom|StringJsonBoolean|StringJsonGeoCoordSystem|StringJsonGeoGeom|StringJsonNumber|StringJsonObject|StringJsonTile|StringJsonValue|StringJsonArrayValue|StringJsonArray|StringLength|StringPadEnd|StringPadStart|StringRegexpCount|StringRegexpFind|StringRegexpFindNth|StringRegexpMatches|StringRegexpReplace|StringRegexpReplaceNth|StringRegexpSubstring|StringRegexpSubstringNth|StringReplace|StringReplaceCollate|StringReplaceNth|StringReplaceNthCollate|StringReverse|StringSoundex|StringStart|StringStartsWith|StringStartsWithCollate|StringSubstring|StringSubstringLen|StringToCharacters|StringToJsonObjectValues|StringToJsonArrayValues|StringToLowerCase|StringToLowerCaseCollate|StringToRegexpMatches|StringToTitleCase|StringToTitleCaseCollate|StringToTokens|StringToUpperCase|StringToUpperCaseCollate|StringTranslate|StringTrim|StringTrimEnd|StringTrimStart|StringUnescape|StringUnescapeDecode|StringUnescapeJson|StringUrlAppend|StringUrlExtra|StringUrlHost|StringUrlMake|StringUrlPassword|StringUrlPath|StringUrlPort|StringUrlScheme|StringUrlUser|StringWktGeom)\\b",
+            "name": "entity.name.function.string.sql"
+        },
+        {
+            "comment": "Tile functions",
+            "match": "(?i)\\b(TileAbs|TileAcos|TileAcosh|TileAsin|TileAsinh|TileAspect|TileAtan|TileAtan2|TileAtanh|TileBgrHcy|TileBgrHsi|TileBgrHsl|TileBgrHsv|TileCbrt|TileCeil|TileCeilDecs|TileChannel|TileChannelCopy|TileChannelCount|TileChannels|TileChannelsConcat|TileChannelsConcatFill|TileClear|TileContourArea|TileContourAreaPar|TileContourAreas|TileContourAreasPar|TileContourLine|TileContourLinePar|TileContourLines|TileContourLinesPar|TileContrast|TileCos|TileCosh|TileCurvGaussian|TileCurvMean|TileCurvPlan|TileCurvProfile|TileCut|TileCutBorder|TileCutRect|TileDistanceMake|TileDistanceMakePar|TileDistanceMakeSlope|TileDistanceMakeSlopePar|TileDistanceMakeWeighted|TileDistanceMakeWeightedPar|TileDistanceTilesClosest|TileDistanceTilesClosestPar|TileDistanceTilesDirection|TileDistanceTilesDirectionPar|TileDistanceTilesLength|TileDistanceTilesLengthPar|TileErf|TileErfc|TileExp|TileExp10|TileExp2|TileExpm1|TileFill|TileFillBaseLevel|TileFillMissing|TileFillMissingCopy|TileFillMissingNearest|TileFillSinks|TileFillSinksPar|TileFilter|TileFilterCount|TileFilterDefCircle|TileFilterDefCross|TileFilterDefDiamond|TileFilterDefDirection|TileFilterDefEdges|TileFilterDefEdgesDirection|TileFilterDefGaussian|TileFilterDefSharpen|TileFilterDefSquare|TileFilterDiversity|TileFilterDiversityIndex|TileFilterMajor|TileFilterMax|TileFilterMedian|TileFilterMin|TileFilterStDev|TileFilterStDevPop|TileFilterSum|TileFilterVar|TileFilterVarPop|TileFloor|TileFloorDecs|TileFlowDirAccum|TileFlowDirAccumPar|TileFract|TileFractDecs|TileGeomAvg|TileGeomCount|TileGeomDiversity|TileGeomDiversityIndex|TileGeomMajor|TileGeomMax|TileGeomMedian|TileGeomMin|TileGeomOverlayCount|TileGeomOverlayCountPar|TileGeomOverlayMax|TileGeomOverlayMaxPar|TileGeomOverlayMin|TileGeomOverlayMinPar|TileGeomOverlaySum|TileGeomOverlaySumPar|TileGeomSample|TileGeomStDev|TileGeomStDevPop|TileGeomSum|TileGeomToValues|TileGeomToValuesX2|TileGeomToValuesX3|TileGeomToValuesX4|TileGeomVar|TileGeomVarPop|TileHcyBgr|TileHsiBgr|TileHslBgr|TileHsvBgr|TileHypot|TileInterpolate|TileInterpolateGravity|TileInterpolateGravityPar|TileInterpolateKriging|TileInterpolateKrigingPar|TileInterpolateKrigingMedianPolish|TileInterpolateKrigingMedianPolishPar|TileInterpolateKrigingRegression|TileInterpolateKrigingRegressionPar|TileInterpolateNatural|TileInterpolateNaturalPar|TileInterpolateReport|TileInterpolateSpline|TileInterpolateSplinePar|TileInterpolateTriangulation|TileInterpolateTriangulationPar|TileInterpolateTriangulationSeg|TileInterpolateTriangulationSegPar|TileJ0|TileJ1|TileJn|TileJson|TileLgamma|TileLog|TileLog10|TileLog1p|TileLog2|TileMake|TileMask|TileMaskRange|TileMaskReplace|TileMax|TileMin|TileNoise|TilePow|TileRcbrt|TileRemoveBorder|TileRound|TileRoundDecs|TileRsqrt|TileSieve|TileSievePar|TileSieveStep|TileSieveStepPar|TileSign|TileSin|TileSinh|TileSize|TileSlope|TileSqrt|TileTan|TileTanh|TileTgamma|TileToValues|TileToValuesX2|TileToValuesX3|TileToValuesX4|TileTraceArea|TileTraceAreaPar|TileTraceAreas|TileTraceAreasPar|TileTraceAreasX2|TileTraceAreasX2Par|TileTraceAreasX3|TileTraceAreasX3Par|TileTraceAreasX4|TileTraceAreasX4Par|TileTrunc|TileTruncDecs|TileUpdateFieldPyramids|TileUpdatePyramids|TileUpdatePyramidsAll|TileValueAvg|TileValueCount|TileValueCountMissing|TileValueMax|TileValueMin|TileValueStDev|TileValueStDevPop|TileValueSum|TileValueVar|TileValueVarPop|TileViewshedArea|TileViewshedAreaAll|TileViewshedAreaAllPar|TileViewshedAreaAny|TileViewshedAreaAnyPar|TileViewshedAreaPar|TileViewshedMake|TileViewshedMakePar|TileViewshedTilesCount|TileViewshedTilesCountPar|TileViewshedTilesLevelAll|TileViewshedTilesLevelAllPar|TileViewshedTilesLevelAny|TileViewshedTilesLevelAnyPar|TileViewshedTraceLine|TileWatershedAreas|TileWatershedAreasPar|TileWatershedAreasSinks|TileWatershedAreasSinksPar|TileWatershedAreasUpstream|TileWatershedAreasUpstreamPar|TileWatershedAreaUpstream|TileWatershedAreaUpstreamPar|TileWatershedLines|TileWatershedLinesPar|TileWatershedLinesDownstream|TileWatershedLinesDownstreamPar|TileWatershedLinesUpstream|TileWatershedLinesUpstreamPar|TileWatershedLineDownstream|TileWatershedLineDownstreamPar|TileWatershedLineUpstream|TileWatershedLineUpstreamPar|TileWatershedMake|TileWatershedMakePar|TileWatershedMakeDir|TileWatershedMakeDirPar|TileY0|TileY1|TileYn)\\b",
+            "name": "entity.name.function.tile.sql"
+        },
+        {
+            "comment": "Vector functions",
+            "match": "(?i)\\b(VectorBgrHcy|VectorBgrHsi|VectorBgrHsl|VectorBgrHsv|VectorCross|VectorDot|VectorHcyBgr|VectorHsiBgr|VectorHslBgr|VectorHsvBgr|VectorMakeX2|VectorMakeX3|VectorMakeX4|VectorValue|VectorValues)\\b",
+            "name": "entity.name.function.vector.sql"
+        },
+        {
+            "comment": "Names with double colon",
+            "captures": {
+                "1": {
+                    "name": "support.variable"
+                },
+                "2": {
+                    "name": "support.variable"
+                }
+            },
+            "match": "(\\w+?)::(\\w+)"
+        },
+        {
+            "comment": "Escape characters",
+            "match": "\\\\.",
+            "name": "constant.character.escape.sql"
+        },
+        {
+            "include": "#strings"
+        }
+    ],
+    "repository": {
+        "comments": {
+            "patterns": [
+                {
+                    "begin": "(^[ \\t]+)?(?=--)",
+                    "beginCaptures": {
+                        "1": {
+                            "name": "punctuation.whitespace.comment.leading.sql"
+                        }
+                    },
+                    "end": "(?!\\G)",
+                    "patterns": [
+                        {
+                            "begin": "--",
+                            "beginCaptures": {
+                                "0": {
+                                    "name": "punctuation.definition.comment.sql"
+                                }
+                            },
+                            "end": "\\n",
+                            "name": "comment.line.double-dash.sql"
+                        }
+                    ]
+                }
+            ]
+        },
+        "string_escape": {
+            "match": "\\.",
+            "name": "constant.character.escape.sql"
+        },
+        "strings": {
+            "patterns": [
+
+                {
+                    "begin": "@?'",
+                    "beginCaptures": {
+                        "0": {
+                            "name": "punctuation.definition.string.begin.sql"
+                        }
+                    },
+                    "end": "'",
+                    "endCaptures": {
+                        "0": {
+                            "name": "punctuation.definition.string.end.sql"
+                        }
+                    },
+                    "name": "string.quoted.single.sql",
+                    "patterns": [
+                        {
+                            "include": "#string_escape"
+                        }
+                    ]
+                }
+            ]
+        }
+    }
+}

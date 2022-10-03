@@ -1,0 +1,13 @@
+**
+!README.md
+!CHANGELOG.md
+!LICENSE.md
+!package.json
+!package.nls.json
+!language-configuration.json
+!syntaxes/sql9.tmLanguage.json
+!snippets/sql9.code-snippets
+.vscode/**
+.vscode-test/**
+.gitignore
+vsc-extension-quickstart.md
