@@ -7,6 +7,7 @@
 !language-configuration.json
 !syntaxes/sql9.tmLanguage.json
 !snippets/sql9.code-snippets
+!9icon_128x128.png
 .vscode/**
 .vscode-test/**
 .gitignore

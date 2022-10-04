@@ -1,4 +1,4 @@
 {
-	"displayName": "SQL for Manifold 9",
-	"description": "Provides syntax highlighting and bracket matching for Manifold 9 SQL files."
+	"extension.displayName": "SQL (Manifold 9)",
+	"extension.description": "Provides syntax highlighting and snippets for SQL language of Manifold® Release 9"
 }
