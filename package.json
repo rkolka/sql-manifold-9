@@ -1,8 +1,9 @@
 {
     "name": "sql-manifold-9",
-    "displayName": "Syntax highlighting for Manifold 9 SQL",
-    "description": "Provides SQL syntax highlighting for Manifold System 9",
-    "version": "0.1.0",
+    "displayName": "%extension.displayName%",
+    "description": "%extension.description%",
+    "icon": "9icon_128x128.png",
+    "version": "0.1.7",
     "publisher": "rkolka",
     "license": "MIT",
     "repository": { 
@@ -38,7 +39,7 @@
     },
     "scripts": {
         "build": "vsce package -o dist/sql9.vsix",
-        "package": "vsce package -o dist/sql9.vsix",
+        "package": "vsce package",
         "deploy:local": "code --install-extension dist/sql9.vsix --force"
         
       }
