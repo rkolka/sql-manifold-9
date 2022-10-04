@@ -2,6 +2,10 @@
 
 Manifold's SQL engine includes multiple features specifically designed for spatial SQL. Works for all data, including rasters, vector, and tables. The engine is automatically CPU parallel and GPU parallel. Includes hundreds of spatial SQL functions. 
 
+## Download and install
+[:floppy_disk: Click here to download VSIX](https://github.com/rkolka/sql-manifold-9/raw/master/dist/sql9.vsix "sql9.vsix")
+then run `code.exe --install-extension .\sql9.vsix`.
+
 ## Features
 
 This extension provides syntax highlighting and snippets for Manifold's SQL.
