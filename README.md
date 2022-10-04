@@ -1,6 +1,6 @@
 # Support for SQL language of Manifold® Release 9 in VSCode
 
-Manifold's SQL engine includes multiple features specifically designed for spatial SQL. Works for all data, including rasters, vector, and tables. The engine is automatically CPU parallel and GPU parallel. Includes hundreds of spatial SQL functions. 
+Manifold's SQL engine includes multiple features specifically designed for spatial SQL. Works for all data, including rasters, vector, and tables. The engine is automatically CPU parallel and GPU parallel. 
 
 ## Download and install
 [:floppy_disk: Click here to download VSIX](https://github.com/rkolka/sql-manifold-9/raw/master/dist/sql9.vsix "sql9.vsix")
