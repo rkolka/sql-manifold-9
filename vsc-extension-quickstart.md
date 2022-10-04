@@ -23,9 +23,9 @@
 
 * To add features such as intellisense, hovers and validators check out the VS Code extenders documentation at <https://code.visualstudio.com/docs>
 
-## Install your extension
+## Locally install this extension
 
-* If `npm` not already installed `scoop install nodejs`
+* If `npm` not already installed, run `scoop install nodejs` if you like `scoop`, or install `npm` any other way.
 * If `vsce` not already installed `npm install -g vsce`
 * To start using your extension with Visual Studio Code run `vsce package -o dist/sql9.vsix` in this folder and then run `code --install-extension .\dist\sql9.vsix`.
 * To share your extension with the world, read on <https://code.visualstudio.com/docs> about publishing an extension.

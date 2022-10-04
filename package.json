@@ -3,7 +3,7 @@
     "displayName": "%extension.displayName%",
     "description": "%extension.description%",
     "icon": "9icon_128x128.png",
-    "version": "0.1.7",
+    "version": "0.1.8",
     "publisher": "rkolka",
     "license": "MIT",
     "repository": { 
@@ -38,8 +38,8 @@
         }]
     },
     "scripts": {
-        "build": "vsce package -o dist/sql9.vsix",
         "package": "vsce package",
+        "build:local": "vsce package -o dist/sql9.vsix",
         "deploy:local": "code --install-extension dist/sql9.vsix --force"
         
       }

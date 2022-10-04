@@ -6,12 +6,18 @@ Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how 
 
 ## [Unreleased]
 
-## [0.1.0] - 2022-10-04
+## [0.1.8] - 2022-10-04
+
+### Added
+
+- VSIX to download
+
+## [0.1.7] - 2022-10-03
 
 ### Added
 
 - A snippet
-- 
+
 
 ## [0.0.1] - 2021-12-28
 
