@@ -1,0 +1,63 @@
+{
+	// Place your sql-manifold-9 workspace snippets here. Each snippet is defined under a snippet name and has a scope, prefix, body and 
+	// description. Add comma separated ids of the languages where the snippet is applicable in the scope field. If scope 
+	// is left empty or omitted, the snippet gets applied to all languages. The prefix is what is 
+	// used to trigger the snippet and the body will be expanded and inserted. Possible variables are: 
+	// $1, $2 for tab stops, $0 for the final cursor position, and ${1:label}, ${2:another} for placeholders. 
+	// Placeholders with the same ids are connected.
+
+		
+	"EPSG":{
+		"scope": "sql9",
+		"prefix": "epsg",
+		"body": [
+			"ALTER TABLE [${1:tablename}] (",
+			"  ADD PROPERTY 'FieldCoordSystem.${2:geom}' 'EPSG:$0${3|4326,3857|},mfd:{ \"Axes\": \"XY\" }'",
+		]
+		,
+		"description": "Set or update FieldCoordSystem"
+	},
+	"xLET":{
+		"scope": "sql9",
+		"prefix": "VALUE",
+		"body": "VALUE @${1:varname} ${2|BOOLEAN,DATETIME,FLOAT32,FLOAT32X2,FLOAT32X3,FLOAT32X4,FLOAT64,FLOAT64X2,FLOAT64X3,FLOAT64X4,GEOM,GEOMMFD,GEOMWKB,INT16,INT16X2,INT16X3,INT16X4,INT32,INT32X2,INT32X3,INT32X4,INT64,INT64X2,INT64X3,INT64X4,INT8,INT8X2,INT8X3,INT8X4,NVARCHAR,TABLE,TILE,UINT16,UINT16X2,UINT16X3,UINT16X4,UINT32,UINT32X2,UINT32X3,UINT32X4,UINT64,UINT64X2,UINT64X3,UINT64X4,UINT8,UINT8X2,UINT8X3,UINT8X4,UUID,VARBINARY,VARCHAR|} = $0 ; -- comment"
+		,
+		"description": "Declare a variable"
+	},
+
+
+	"xSEL":{
+		"scope": "sql9",
+		"prefix": "SELECT",
+		"body": "SELECT ${1:*} FROM [${4:a_table}] ${5:WHERE [${6:a}] = ${7:a}} $0"
+		,
+		"description": "One line SELECT"
+	},
+	
+	"xAdd GEOM and DRAWING": {
+		"prefix": "agd",
+		"body": [
+			"",
+			"-- Add Geom field, geom index and create drawing",
+			"",
+			"--ALTER TABLE [${1:tablename}] ( DROP INDEX [${2:geom}_x] ); ",
+			"--ALTER TABLE [${1:tablename}] ( DROP [${2:geom}], DROP PROPERTY 'FieldCoordSystem.${2:geom}'); ",
+			"ALTER TABLE [${1:tablename}] (",
+			"  ADD [${2:geom}] GEOM,",
+			"  ADD PROPERTY 'FieldCoordSystem.${2:geom}' 'EPSG:${3|4326,3857|},mfd:{ \"Axes\": \"XY\" }'",
+			");",
+			"",
+			"ALTER TABLE [${1:tablename}] (",
+			"  ADD INDEX [${2:geom}_x] RTREE ([${2:geom}])",
+			");",
+			"",
+			"--DROP DRAWING [${1:tablename} ${2:geom}] ;",
+			"CREATE DRAWING [${1:tablename} ${2:geom}] (",
+			"  PROPERTY 'FieldGeom' '${2:geom}',",
+			"  PROPERTY 'Table' '[${1:tablename}]'",
+			"  ${4:, PROPERTY 'Folder' '${5:foldername}'}",
+			");"
+		],
+		"description": "keep pressing TAB, "
+	},
+}

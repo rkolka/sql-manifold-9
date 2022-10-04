@@ -3,7 +3,7 @@
     "displayName": "%extension.displayName%",
     "description": "%extension.description%",
     "icon": "9icon_128x128.png",
-    "version": "0.1.8",
+    "version": "0.1.12",
     "publisher": "rkolka",
     "license": "MIT",
     "repository": { 

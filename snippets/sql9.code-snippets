@@ -1,10 +1,27 @@
 {
+	"VAL":{
+		"scope": "sql9",
+		"prefix": "VALUE",
+		"body": "VALUE @${1:varname} ${2|BOOLEAN,DATETIME,FLOAT32,FLOAT32X2,FLOAT32X3,FLOAT32X4,FLOAT64,FLOAT64X2,FLOAT64X3,FLOAT64X4,GEOM,GEOMMFD,GEOMWKB,INT16,INT16X2,INT16X3,INT16X4,INT32,INT32X2,INT32X3,INT32X4,INT64,INT64X2,INT64X3,INT64X4,INT8,INT8X2,INT8X3,INT8X4,NVARCHAR,TABLE,TILE,UINT16,UINT16X2,UINT16X3,UINT16X4,UINT32,UINT32X2,UINT32X3,UINT32X4,UINT64,UINT64X2,UINT64X3,UINT64X4,UINT8,UINT8X2,UINT8X3,UINT8X4,UUID,VARBINARY,VARCHAR|} = $0 ; -- comment"
+		,
+		"description": "Declare a variable"
+	},
+
+
+	"SEL":{
+		"scope": "sql9",
+		"prefix": "SELECT",
+		"body": "SELECT ${1:*} FROM [${4:a_table}] ${5:WHERE [${6:a}] = ${7:a}} $0"
+		,
+		"description": "One line SELECT"
+	},
+
 	"Create table": {
 		"scope": "sql9",
 		"prefix": "cd",
 		"body": [
 			"CREATE TABLE [$1] (",
-			"  [mfd_id] INT64,",
+			"\t[mfd_id] INT64,",
 			"--   [a_bool] BOOLEAN,",
 			"--   [a_date] DATETIME,",
 			"--   [an_int] INT64,",
@@ -21,4 +38,41 @@
 		],
 		"description": "Create a table"
 	}
+	,
+	"Add GEOM and DRAWING": {
+		"prefix": "agd",
+		"body": [
+			"",
+			"-- Add Geom field, geom index and create drawing",
+			"",
+			"--ALTER TABLE [${1:tablename}] ( DROP INDEX [${2:geomname}_x] ); ",
+			"--ALTER TABLE [${1:tablename}] ( DROP [${2:geomname}], DROP PROPERTY 'FieldCoordSystem.${2:geomname}'); ",
+			"ALTER TABLE [${1:tablename}] (",
+			"  ADD [${2:geomname}] GEOM,",
+			"  ADD PROPERTY 'FieldCoordSystem.${2:geomname}' 'EPSG:${3|4326,3857|},mfd:{ \"Axes\": \"XY\" }'",
+			");",
+			"",
+			"ALTER TABLE [${1:tablename}] (",
+			"  ADD INDEX [${2:geomname}_x] RTREE ([${2:geomname}])",
+			");",
+			"",
+			"--DROP DRAWING [${1:tablename} ${2:geomname}] ;",
+			"CREATE DRAWING [${1:tablename} ${2:geomname}] (",
+			"  PROPERTY 'FieldGeom' '${2:geomname}',",
+			"  PROPERTY 'Table' '[${1:tablename}]'",
+			"  ${4:, PROPERTY 'Folder' '${5:foldername}'}",
+			");"
+		],
+		"description": "keep pressing TAB, "
+	},
+	"EPSG":{
+		"scope": "sql9",
+		"prefix": "epsg",
+		"body": [
+			"ALTER TABLE [${1:tablename}] (",
+			"  ADD PROPERTY 'FieldCoordSystem.${2:geom}' 'EPSG:$0${3|4326,3857|},mfd:{ \"Axes\": \"XY\" }'",
+		]
+		,
+		"description": "Set or update FieldCoordSystem"
+	},
 }
