@@ -6,7 +6,124 @@
 	// $1, $2 for tab stops, $0 for the final cursor position, and ${1:label}, ${2:another} for placeholders. 
 	// Placeholders with the same ids are connected.
 
-		
+
+	"DROP":{
+		"scope": "sql9",
+		"prefix": "DROP",
+		"body": [
+			"-- ",
+			"DROP  ${1|COMMENTS,DATASOURCE,DRAWING,IMAGE,LABELS,LAYOUT,LOCATION,MAP,QUERY,ROOT,SCRIPT,TABLE|} [${2:name}]",
+			";"
+		],
+		"description": "Drop a component"
+	},
+
+	"CREATE":{
+		"scope": "sql9",
+		"prefix": "wx",
+		"body": [
+			"-- ",
+			"CREATE ${1|COMMENTS,DATASOURCE,DRAWING,IMAGE,LABELS,LAYOUT,LOCATION,MAP,QUERY,ROOT,SCRIPT|} [${2:name}]" ,
+			"(",
+			"\tPROPERTY '${3:name}' '${4:value}'",
+			")",
+			";"
+		],
+		"description": "Create a component"
+	},
+
+	"CREATE COMMENTS":{
+		"scope": "sql9",
+		"prefix": "wc",
+		"body": [
+			"-- ",
+			"CREATE COMMENTS [${1:name}]" ,
+			"(",
+			"\tPROPERTY 'Text' '$2',",
+			"\t${4:PROPERTY 'Folder' '${2:folder}'}",
+			")",
+			";$0"
+		],
+		"description": "Create a COMMENTS component"
+	},
+
+	"CREATE DATASOURCE":{
+		"scope": "sql9",
+		"prefix": "ww",
+		"body": [
+			"-- ",
+			"CREATE DATASOURCE [${1:name}]" ,
+			"(",
+			"\tPROPERTY 'Source' @' { \"Source\": \"${TM_DIRECTORY/([\\])/$1$1/}\\some.file\", \"SourceCacheExternal\": true }',",
+			"\tPROPERTY 'Type' '$3',",
+			"\t${4:PROPERTY 'Folder' '${2:folder}'}",
+			")",
+			";$0"
+		],
+		"description": "Create a DATASOURCE component"
+	},
+
+	"CREATE DRAWING":{
+		"scope": "sql9",
+		"prefix": "wd",
+		"body": [
+			"-- ",
+			"CREATE DRAWING [${1:name}]" ,
+			"(",
+			"\tPROPERTY 'FieldGeom' '$2',",
+			"\tPROPERTY 'Table' '[$3]',",
+			"\t${4:PROPERTY 'Folder' '${2:folder}'}",
+			")",
+			";$0"
+		],
+		"description": "Create a DRAWING component"
+	},
+
+	"CREATE IMAGE":{
+		"scope": "sql9",
+		"prefix": "wi",
+		"body": [
+			"-- ",
+			"CREATE IMAGE [${1:name}]" ,
+			"(",
+			"\tPROPERTY 'FieldGeom' '$2',",
+			"\tPROPERTY 'Table' '[$3]',",
+			"\tPROPERTY 'FieldTile' 'Tile',",
+			"\tPROPERTY 'FieldX' 'X',",
+			"\tPROPERTY 'FieldY' 'Y',",
+			"\tPROPERTY 'Rect' '[ 0, 0, 1024, 1024 ]',",
+			"\t${4:PROPERTY 'Folder' '${2:folder}'}",
+			")",
+			";$0"
+		],
+		"description": "Create a DRAWING component"
+	},
+
+
+
+
+	"DEMO":{
+		"scope": "sql9",
+		"prefix": "DEMO",
+		"body": [
+			"-- ",
+			"CREATE  ${1|COMMENTS,DATASOURCE,DRAWING,IMAGE,LABELS,LAYOUT,LOCATION,MAP,QUERY,ROOT,SCRIPT,TABLE|} [${2:name}]",
+			"(",
+			"\tPROPERTY 'Folder' ''",
+			"\t",
+			"\tPROPERTY 'Selected' '${TM_SELECTED_TEXT:~}'",
+			"\tPROPERTY 'CurrentPos' '${TM_CURRENT_LINE:~} - ${TM_CURRENT_WORD:~} - ${TM_LINE_INDEX:~} - ${TM_LINE_NUMBER:~}'",
+			"\tPROPERTY 'Filen' '${TM_FILENAME:~} - ${TM_DIRECTORY:~} - ${RELATIVE_FILEPATH:~} - ${WORKSPACE_NAME:~} - ${WORKSPACE_FOLDER:~}'",
+			"\tPROPERTY 'Clipboard1' '${CLIPBOARD/^[^\\w]*(\\w)+.*$/$1/}'",
+			"\tPROPERTY 'Clipboard' '${CLIPBOARD:/\\n/#/}'",
+			"\tPROPERTY 'Random' '${RANDOM:123456} - ${RANDOM_HEX:ABCDEF} - ${UUID:ABCDEF}'",
+			"\tPROPERTY 'CreatedAt' '${CURRENT_YEAR:1111}-${CURRENT_MONTH:22}-${CURRENT_DATE:44} ${CURRENT_HOUR:33}:${CURRENT_MINUTE:77}:${CURRENT_SECOND:77}'",
+			")",
+			";",
+		],
+		"description": "Drop a component"
+	},		
+
 	"EPSG":{
 		"scope": "sql9",
 		"prefix": "epsg",
@@ -34,30 +151,29 @@
 		"description": "One line SELECT"
 	},
 	
-	"xAdd GEOM and DRAWING": {
+	"d": {
 		"prefix": "agd",
 		"body": [
-			"",
-			"-- Add Geom field, geom index and create drawing",
+			"VALUE @folder VARCHAR = ComponentProperty([${1:tablename}], 'Folder');",
 			"",
 			"--ALTER TABLE [${1:tablename}] ( DROP INDEX [${2:geom}_x] ); ",
 			"--ALTER TABLE [${1:tablename}] ( DROP [${2:geom}], DROP PROPERTY 'FieldCoordSystem.${2:geom}'); ",
 			"ALTER TABLE [${1:tablename}] (",
 			"  ADD [${2:geom}] GEOM,",
-			"  ADD PROPERTY 'FieldCoordSystem.${2:geom}' 'EPSG:${3|4326,3857|},mfd:{ \"Axes\": \"XY\" }'",
+			"  ADD PROPERTY 'FieldCoordSystem.${2:geom}' 'EPSG:$0${6|4326,3857,_|},mfd:{ \"Axes\": \"XY\" }'",
 			");",
 			"",
 			"ALTER TABLE [${1:tablename}] (",
 			"  ADD INDEX [${2:geom}_x] RTREE ([${2:geom}])",
 			");",
 			"",
-			"--DROP DRAWING [${1:tablename} ${2:geom}] ;",
-			"CREATE DRAWING [${1:tablename} ${2:geom}] (",
+			"--DROP DRAWING [${1:tablename} ${2:geom}${3:extra}] ;",
+			"CREATE DRAWING [${1:tablename} ${2:geom}${3:extra}] (",
+			"  ${4:PROPERTY 'Folder' ${5:@folder},}",
 			"  PROPERTY 'FieldGeom' '${2:geom}',",
 			"  PROPERTY 'Table' '[${1:tablename}]'",
-			"  ${4:, PROPERTY 'Folder' '${5:foldername}'}",
 			");"
 		],
-		"description": "keep pressing TAB, "
-	},
+		"description": "dfsfsd"
+	}
 }
