@@ -25,7 +25,7 @@ This is an early release. Please help.
 ## Locally install this extension
 
 * If `npm` not already installed, run `scoop install nodejs` if you like `scoop`, or install `npm` any other way.
-* If `vsce` not already installed, run `npm install -g vsce`.
+* If `vsce` not already installed, run `npm install -g @vscode/vsce`.
 * To start using your extension with Visual Studio Code run `vsce package -o dist/sql9.vsix` in this folder and then run `code --install-extension .\dist\sql9.vsix`.
 
 ## Release Notes
