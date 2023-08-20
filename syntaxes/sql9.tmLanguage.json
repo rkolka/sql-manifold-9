@@ -88,11 +88,6 @@
             "name": "entity.name.function.vector.sql"
         },
         {
-            "comment": "Functions returning TABLEs",
-            "match": "(?i)\\b()\\b",
-            "name": "entity.name.function.vector.sql"
-        },        
-        {
             "comment": "Names with double colon",
             "captures": {
                 "1": {

@@ -5,8 +5,6 @@
     },
     // symbols used as brackets that increase or decrease the indentation.
     "brackets": [
-        //["{", "}"],  // only inside embedded JSON properties
-        //["[", "]"],  // only inside embedded JSON properties
         ["(", ")"]
     ],
     // symbols that are auto closed when typing
@@ -29,7 +27,6 @@
         ["`", "`"]
     ]
     ,
-    
     "indentationRules": {
         // if line starts with SELECT, FROM, WHERE, ORDER BY, ... 
         "increaseIndentPattern": "^(\\s*[(]?[Ss][Ee][Ll][Ee][Cc][Tt]\\b.*)|(\\s*[Ff][Rr][Oo][Mm]\\b.*)|(\\s*[Ww][Hh][Ee][Rr][Ee]\\b.*)|(\\s*[Gg][Rr][Oo][Uu][Pp]\\s+[Bb][Yy]\\b.*)|(\\s*[Oo][Rr][Dd][Ee][Rr]\\s+[Bb][Yy]\\b.*)$",
