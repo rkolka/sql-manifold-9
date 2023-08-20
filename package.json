@@ -6,7 +6,7 @@
     "version": "0.1.12",
     "publisher": "rkolka",
     "license": "MIT",
-    "repository": { 
+    "repository": {
         "type": "git",
         "url": "https://github.com/rkolka/sql-manifold-9"
     },
@@ -17,30 +17,36 @@
         "Programming Languages"
     ],
     "contributes": {
-        "languages": [{
-            "id": "sql9",
-            "aliases": ["Manifold 9 SQL"],
-            "extensions": [".sql"],
-            "configuration": "./language-configuration.json",
-            "firstLine": "--\\s*\\$manifold\\$"
-
-        }],
+        "languages": [
+            {
+                "id": "sql9",
+                "aliases": [
+                    "Manifold 9 SQL"
+                ],
+                "extensions": [
+                    ".sql"
+                ],
+                "configuration": "./language-configuration.json",
+                "firstLine": "--\\s*\\$manifold\\$"
+            }
+        ],
         "snippets": [
             {
                 "language": "sql9",
                 "path": "./snippets/sql9.code-snippets"
             }
         ],
-        "grammars": [{
-            "language": "sql9",
-            "scopeName": "source.sql9",
-            "path": "./syntaxes/sql9.tmLanguage.json"
-        }]
+        "grammars": [
+            {
+                "language": "sql9",
+                "scopeName": "source.sql9",
+                "path": "./syntaxes/sql9.tmLanguage.json"
+            }
+        ]
     },
     "scripts": {
         "package": "vsce package",
         "build:local": "vsce package -o dist/sql9.vsix",
         "deploy:local": "code --install-extension dist/sql9.vsix --force"
-        
-      }
+    }
 }
