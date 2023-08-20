@@ -30,6 +30,10 @@ This is an early release. Please help.
 
 ## Release Notes
 
+### 1.0.180
+
+Add new function names from Manifold 9.0.180
+
 ### 0.1.8
 
 Add `dist/sql9.vsix`
